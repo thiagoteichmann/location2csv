@@ -15,13 +15,20 @@ public class FileHelper {
 		return String.format(AppConstants.CSV_FILE, key);
 	}
 
-	public void writeToCSV(final String key, final List<Location> locations) throws FileNotFoundException {
+	/**
+	 * Write the list of locations to the CSV file. 
+	 * 
+	 * @param searchKey
+	 * @param locations
+	 * @throws FileNotFoundException
+	 */
+	public void writeToCSV(final String searchKey, final List<Location> locations) throws FileNotFoundException {
 
 		PrintWriter writer = null;
 		try {
 
 			if (locations != null) {
-				writer = new PrintWriter(this.getFileNameForKey(key));
+				writer = new PrintWriter(this.getFileNameForKey(searchKey));
 				writer.println(AppConstants.HEADER);
 
 				for (Location loc : locations) {
@@ -35,6 +42,8 @@ public class FileHelper {
 					joiner.add(String.valueOf(geo.getLongitude()));
 					writer.println(joiner.toString());
 				}
+				System.out.println("Generation done. Please check " + this.getFileNameForKey(searchKey));
+
 			}
 		} finally {
 			if (writer != null){
