@@ -12,6 +12,13 @@ import com.teichmann.base.AppConstants;
 
 public class CityServiceHelper {
 
+	/**
+	 * Calls GoEuro city endpoint.
+	 * 
+	 * @param cityName
+	 * @return
+	 * @throws BadRequestException
+	 */
 	public static Response getCityByName(final String cityName) throws BadRequestException {
 
 		final String endpointAddress = String.format(AppConstants.API_URL, cityName);
@@ -19,11 +26,10 @@ public class CityServiceHelper {
 		final WebTarget target = client.target(endpointAddress);
 		final Response response = target.request(MediaType.APPLICATION_JSON_TYPE).get();
 
-		
-			if (Status.OK.getStatusCode() != response.getStatus()){
-				throw new BadRequestException();
-			}
-		
+		if (Status.OK.getStatusCode() != response.getStatus()) {
+			throw new BadRequestException();
+		}
+
 		return response;
 	}
 
