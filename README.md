@@ -7,7 +7,7 @@ Options to run the code
 
 1. Use the released version of the project selecting releases option above:
 
-2.To generate the jar file: simply call mvn clean package.
+2. To generate the jar file: simply call mvn clean package.
 After having the completion of the call, please run: 
 java -jar location2csv-jar-with-dependencies.jar 'city name'
 
